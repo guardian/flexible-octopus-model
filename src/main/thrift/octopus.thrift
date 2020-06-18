@@ -109,4 +109,10 @@ struct Article {
 
     // the workflow status of the article
     11: required ArticleStatus status;
+
+    // octopus id for the layout the article is attached to
+    12: required string attachedTo;
+
+    // file name including suffix, a composite of story_group, object type and object number
+    13: required string filename;
 }
