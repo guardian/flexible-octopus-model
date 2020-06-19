@@ -81,7 +81,7 @@ struct Article {
     1: required i64 id;
 
     // id for the book section
-    2: required i64 sectionCode;
+    2: required i64 bookSectionId;
 
     // indicates whether the article is for web and/or print pulication
     3: required ForPublication forPublication;
