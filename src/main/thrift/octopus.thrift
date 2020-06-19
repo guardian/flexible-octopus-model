@@ -23,7 +23,7 @@ struct StoryBundle {
     // the primary page that the article is on 
     7: optional i64 pageNumber;
 
-    // the issue date 
+    // the issue date, this is midnight UTC of the date of publication
     8: optional DateTime printPublicationDate;
 
     // octopus id for the layout the article is attached to
