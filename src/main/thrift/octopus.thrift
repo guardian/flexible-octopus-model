@@ -16,7 +16,7 @@ struct StoryBundle {
 
     4: required string sectionCode;
 
-    5: required Article article;
+    5: required Article body;
 
 }
 
