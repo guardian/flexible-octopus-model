@@ -3,6 +3,9 @@ namespace scala com.gu.flexibleoctopus.model.thrift
 /** date times are reprsented as i64 - epoch millis */
 typedef i64 DateTime
 
+/** dates are reprsented as i64 - epoch days */
+typedef i64 Date
+
 /** 
 * A single story bundle that maps directly to a piece of content in Composer 
 */
@@ -23,8 +26,8 @@ struct StoryBundle {
     // the primary page that the article is on 
     7: optional i64 pageNumber;
 
-    // the issue date, this is midnight UTC of the date of publication
-    8: optional DateTime printPublicationDate;
+    // the date of publication
+    8: optional Date printPublicationDate;
 
     // octopus id for the layout the article is attached to
     9: optional string octopusLayoutId;
