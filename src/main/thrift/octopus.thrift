@@ -66,7 +66,7 @@ enum ArticleStatus {
 */
 struct Article {
 
-    1: required string articleId;
+    1: required i64 id;
 
     // indicates whether the article is for web and/or print pulication
     2: required ForPublication forPublication;
