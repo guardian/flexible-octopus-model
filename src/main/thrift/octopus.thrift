@@ -88,4 +88,7 @@ struct Article {
 
     // file name including suffix, a composite of story_group, object type and object number
     8: required string filename;
+
+    // the last user who updated the article
+    9: required string lastModifiedBy
 }
