@@ -1,9 +1,9 @@
 
 name             := "flexible-octopus-model"
 scalaVersion     := "2.13.2"
-version          := "0.4.0"
+version          := "0.5.0"
 organization     := "com.gu"
-crossScalaVersions := Seq("2.11.12", "2.13.1")
+crossScalaVersions := Seq("2.11.12", "2.12.11", "2.13.1")
 
 resolvers += Resolver.jcenterRepo
 
