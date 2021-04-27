@@ -1,19 +1,22 @@
 
 name             := "flexible-octopus-model"
 scalaVersion     := "2.13.2"
-version          := "0.5.0"
 organization     := "com.gu"
 crossScalaVersions := Seq("2.11.12", "2.12.11", "2.13.1")
 
 resolvers += Resolver.jcenterRepo
 
-publishMavenStyle := true
-bintrayOrganization := Some("guardian")
-bintrayVcsUrl := Some("git:git@github.com:guardian/flexible-octopus-model.git")
-bintrayRepository := "editorial-tools"
-
 licenses += ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.html"))
 publishArtifact := true
+
+scmInfo := Some(ScmInfo(url("https://github.com/guardian/flexible-octopus-model"), "scm:git@github.com:guardian/flexible-octopus-model"))
+homepage := scmInfo.value.map(_.browseUrl)
+developers := List(Developer(id = "guardian", name = "Guardian", email = null, url = url("https://github.com/guardian")))
+
+releasePublishArtifactsAction := PgpKeys.publishSigned.value
+publishTo := sonatypePublishToBundle.value
+releaseProcess += releaseStepCommandAndRemaining("sonatypeRelease")
+
 
 libraryDependencies ++= Seq(
   "org.apache.thrift" % "libthrift" % "0.13.0",
