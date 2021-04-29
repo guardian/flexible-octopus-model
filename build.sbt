@@ -1,8 +1,10 @@
+import ReleaseTransformations._
 
 name             := "flexible-octopus-model"
 scalaVersion     := "2.13.2"
 organization     := "com.gu"
-crossScalaVersions := Seq("2.11.12", "2.12.11", "2.13.1")
+crossScalaVersions := Seq("2.11.12", "2.12.11", scalaVersion.value)
+releaseCrossBuild := true
 
 resolvers += Resolver.jcenterRepo
 
@@ -14,9 +16,22 @@ homepage := scmInfo.value.map(_.browseUrl)
 developers := List(Developer(id = "guardian", name = "Guardian", email = null, url = url("https://github.com/guardian")))
 
 releasePublishArtifactsAction := PgpKeys.publishSigned.value
-publishTo := sonatypePublishToBundle.value
-releaseProcess += releaseStepCommandAndRemaining("sonatypeRelease")
+publishTo := sonatypePublishTo.value
 
+releaseProcess := Seq[ReleaseStep](
+  checkSnapshotDependencies,
+  inquireVersions,
+  runClean,
+  runTest,
+  setReleaseVersion,
+  publishArtifacts,
+  releaseStepCommand("sonatypeReleaseAll"),
+  commitReleaseVersion,
+  tagRelease,
+  setNextVersion,
+  commitNextVersion,
+  pushChanges
+)
 
 libraryDependencies ++= Seq(
   "org.apache.thrift" % "libthrift" % "0.13.0",
