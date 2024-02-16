@@ -6,8 +6,6 @@ organization     := "com.gu"
 crossScalaVersions := Seq("2.11.12", "2.12.11", scalaVersion.value)
 releaseCrossBuild := true
 
-resolvers += Resolver.jcenterRepo
-
 licenses += ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.html"))
 publishArtifact := true
 
