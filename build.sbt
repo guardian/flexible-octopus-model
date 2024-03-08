@@ -1,34 +1,26 @@
-import ReleaseTransformations._
+import ReleaseTransformations.*
+import sbtversionpolicy.withsbtrelease.ReleaseVersion
 
 name             := "flexible-octopus-model"
-scalaVersion     := "2.13.2"
+scalaVersion     := "2.13.13"
 organization     := "com.gu"
-crossScalaVersions := Seq("2.11.12", "2.12.11", scalaVersion.value)
+crossScalaVersions := Seq("2.12.19", scalaVersion.value)
+scalacOptions := Seq("-release:8") // https://github.com/guardian/flexible-octopus-converter currently uses Java 8 for CI
+
+licenses := Seq(License.Apache2)
+
+releaseVersion := ReleaseVersion.fromAggregatedAssessedCompatibilityWithLatestRelease().value
 releaseCrossBuild := true
-
-licenses += ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.html"))
-publishArtifact := true
-
-scmInfo := Some(ScmInfo(url("https://github.com/guardian/flexible-octopus-model"), "scm:git@github.com:guardian/flexible-octopus-model"))
-homepage := scmInfo.value.map(_.browseUrl)
-developers := List(Developer(id = "guardian", name = "Guardian", email = null, url = url("https://github.com/guardian")))
-
-releasePublishArtifactsAction := PgpKeys.publishSigned.value
-publishTo := sonatypePublishTo.value
-
 releaseProcess := Seq[ReleaseStep](
   checkSnapshotDependencies,
   inquireVersions,
   runClean,
   runTest,
   setReleaseVersion,
-  publishArtifacts,
-  releaseStepCommand("sonatypeReleaseAll"),
   commitReleaseVersion,
   tagRelease,
   setNextVersion,
-  commitNextVersion,
-  pushChanges
+  commitNextVersion
 )
 
 libraryDependencies ++= Seq(

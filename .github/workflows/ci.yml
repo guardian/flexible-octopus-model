@@ -1,0 +1,25 @@
+name: CI
+on:
+  workflow_dispatch:
+  pull_request:
+
+  # triggering CI on default branch improves caching
+  # see https://docs.github.com/en/free-pro-team@latest/actions/guides/caching-dependencies-to-speed-up-workflows#restrictions-for-accessing-a-cache
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: corretto
+          java-version: 11 # Although we may release a Java 8-compatible artifact, avoid running EOL'd Java 8 if we can
+          cache: sbt
+      - name: Build (there are currently no tests)
+        run: sbt -v +compile
