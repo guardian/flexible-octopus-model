@@ -1,6 +1,7 @@
 # Flexible Octopus Model
 
 [![flexible-octopus-model Scala version support](https://index.scala-lang.org/guardian/flexible-octopus-model/flexible-octopus-model/latest-by-scala-version.svg?platform=jvm)](https://index.scala-lang.org/guardian/flexible-octopus-model/flexible-octopus-model)
+[![Release](https://github.com/guardian/flexible-octopus-model/actions/workflows/release.yml/badge.svg)](https://github.com/guardian/flexible-octopus-model/actions/workflows/release.yml)
 
 This is the Thrift definition of the Flexible Octopus model.
 
