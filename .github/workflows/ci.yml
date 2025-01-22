@@ -15,11 +15,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Setup JDK
-        uses: actions/setup-java@v4
-        with:
-          distribution: corretto
-          java-version: 11 # Although we may release a Java 8-compatible artifact, avoid running EOL'd Java 8 if we can
-          cache: sbt
+      - name: Set up Scala
+        uses: guardian/setup-scala@v1
       - name: Build (there are currently no tests)
         run: sbt -v +compile
