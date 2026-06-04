@@ -24,6 +24,6 @@ releaseProcess := Seq[ReleaseStep](
 )
 
 libraryDependencies ++= Seq(
-  "org.apache.thrift" % "libthrift" % "0.13.0",
+  "org.apache.thrift" % "libthrift" % "0.23.0",
   "com.twitter" %% "scrooge-core" % "20.5.0"
 )
