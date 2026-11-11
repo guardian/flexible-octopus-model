@@ -16,6 +16,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Set up Scala
-        uses: guardian/setup-scala@v1
+        uses: guardian/setup-scala@v2
       - name: Build (there are currently no tests)
         run: sbt -v +compile
